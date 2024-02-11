@@ -210,6 +210,8 @@ function isValueEqualsIndex(arr) {
  *    insertItem([ 1, 3, 4, 5 ], 2, 1)  => [ 1, 2, 3, 4, 5 ]
  *    insertItem([ 1, 'b', 'c'], 'x', 0) => [ 'x', 1, 'b', 'c' ]
  */
+
+/* todo */
 function insertItem(arr, item, index) {
   /* throw new Error('Not implemented'); */
   return arr.slice(0, index).concat(item).concat(arr.slice(index));
@@ -242,6 +244,8 @@ function getHead(arr, n) {
  *    getTail([ 'a', 'b', 'c', 'd'], 3) => [ 'b', 'c', 'd' ]
  *    getTail([ 'a', 'b', 'c', 'd'], 0) => []
  */
+
+/* todo */
 function getTail(arr, n) {
   /* throw new Error('Not implemented'); */
   return arr.slice(-n);
@@ -320,10 +324,20 @@ function distinct(arr) {
  *    createNDimensionalArray(4, 2) => [[[[0, 0], [0, 0]], [[0, 0], [0, 0]]], [[[0, 0], [0, 0]], [[0, 0], [0, 0]]]]
  *    createNDimensionalArray(1, 1) => [0]
  */
+
+/* todo */
 function createNDimensionalArray(/* n, size */) {
   throw new Error('Not implemented');
-}
+  /* let startDepth = 1;
+  let arrayItem = Array(size).fill(0);
+  if (startDepth === n) {
+    return [].fill(arrayItem);
+  }
+  return arrayItem;
 
+
+console.log(createNDimensionalArray(2,3)); */
+}
 /**
  * Flattens a nested array into a single-level array.
  *
@@ -335,8 +349,9 @@ function createNDimensionalArray(/* n, size */) {
  *    flattenArray(['a', ['b', ['c', 'd'], 'e'], 'f']) => ['a', 'b', 'c', 'd', 'e', 'f']
  *    flattenArray([1, 2, 3, 4]) => [1, 2, 3, 4]
  */
-function flattenArray(/* nestedArray */) {
-  throw new Error('Not implemented');
+function flattenArray(nestedArray) {
+  /* throw new Error('Not implemented'); */
+  return nestedArray.flat(Infinity);
 }
 
 /**
@@ -352,8 +367,9 @@ function flattenArray(/* nestedArray */) {
  *   selectMany([[1, 2], [3, 4], [5, 6]], (x) => x) =>   [ 1, 2, 3, 4, 5, 6 ]
  *   selectMany(['one','two','three'], (x) => x.split('')) =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  /* throw new Error('Not implemented'); */
+  return arr.map((el) => childrenSelector(el)).flat(Infinity);
 }
 
 /**
@@ -369,8 +385,9 @@ function selectMany(/* arr, childrenSelector */) {
  *   calculateBalance([ [ 10, 8 ], [ 1, 5 ] ])  => (10 - 8) + (1 - 5) = 2 + -4 = -2
  *   calculateBalance([]) => 0
  */
-function calculateBalance(/* arr */) {
-  throw new Error('Not implemented');
+function calculateBalance(arr) {
+  /* throw new Error('Not implemented'); */
+  return arr.map(([i, e]) => i - e).reduce((acc, sum) => acc + +sum);
 }
 
 /**
@@ -385,9 +402,39 @@ function calculateBalance(/* arr */) {
  *    createChunks(['a', 'b', 'c', 'd', 'e'], 2) => [['a', 'b'], ['c', 'd'], ['e']]
  *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
  */
-function createChunks(/* arr, chunkSize */) {
-  throw new Error('Not implemented');
+
+/* todo */
+function createChunks(arr, chunkSize) {
+  /* throw new Error('Not implemented'); */
+  let start = 0;
+  const end = start + chunkSize;
+  const arrLength = arr.length;
+  function setStart() {
+    start = end;
+    return true;
+  }
+
+  function setEnd() {
+    if (start + chunkSize < arrLength) {
+      return start + chunkSize;
+    }
+    return arrLength;
+  }
+  const res = [];
+  function inner() {
+    res.push(arr.slice(start, end));
+    if (end < arrLength) {
+      setStart();
+      setEnd();
+
+      inner();
+    }
+  }
+  inner();
+  return res;
 }
+
+/* console.log(createChunks([1, 2, 3, 4, 5, 6, 7], 3)); */
 
 /**
  * Generates an array of odd numbers of the specified length.
@@ -401,8 +448,20 @@ function createChunks(/* arr, chunkSize */) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  /* throw new Error('Not implemented'); */
+  const res = [];
+  function inner(length) {
+    if (length === 1) {
+      res.push(1);
+      return res;
+    }
+    res.push(length * 2 - 1);
+    inner(length - 1);
+    return res;
+  }
+  inner(len);
+  return res.reverse();
 }
 
 /**
@@ -417,6 +476,8 @@ function generateOdds(/* len */) {
  *   getElementByIndices(['one','two','three'], [2]) => 'three'  (arr[2])
  *   getElementByIndices([[[ 1, 2, 3]]], [ 0, 0, 1 ]) => 2        (arr[0][0][1])
  */
+
+/* todo */
 function getElementByIndices(/* arr, indices */) {
   throw new Error('Not implemented');
 }
@@ -433,6 +494,8 @@ function getElementByIndices(/* arr, indices */) {
  *  getFalsyValuesCount([ -1, 'false', null, 0 ]) => 2
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
+
+/* todo */
 function getFalsyValuesCount(/* arr */) {
   throw new Error('Not implemented');
 }
@@ -455,6 +518,8 @@ function getFalsyValuesCount(/* arr */) {
  *                              [0,0,0,1,0],
  *                              [0,0,0,0,1]]
  */
+
+/* todo */
 function getIdentityMatrix(/* n */) {
   throw new Error('Not implemented');
 }
@@ -470,6 +535,8 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
+
+/* todo */
 function getIndicesOfOddNumbers(/* numbers */) {
   throw new Error('Not implemented');
 }
@@ -484,6 +551,8 @@ function getIndicesOfOddNumbers(/* numbers */) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
+
+/* todo */
 function getHexRGBValues(/* arr */) {
   throw new Error('Not implemented');
 }
@@ -502,6 +571,8 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
+
+/* todo */
 function getMaxItems(/* arr, n */) {
   throw new Error('Not implemented');
 }
@@ -518,6 +589,8 @@ function getMaxItems(/* arr, n */) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
+
+/* todo */
 function findCommonElements(/* arr1, arr2 */) {
   throw new Error('Not implemented');
 }
@@ -533,6 +606,8 @@ function findCommonElements(/* arr1, arr2 */) {
  *    findLongestIncreasingSubsequence([3, 10, 2, 1, 20]) => 2
  *    findLongestIncreasingSubsequence([50, 3, 10, 7, 40, 80]) => 3
  */
+
+/* todo */
 function findLongestIncreasingSubsequence(/* nums */) {
   throw new Error('Not implemented');
 }
@@ -551,6 +626,8 @@ function findLongestIncreasingSubsequence(/* nums */) {
  *  propagateItemsByPositionIndex([ 'a', 'b', 'c', null ]) => [ 'a', 'b', 'b', 'c', 'c', 'c',  null, null, null, null ]
  *  propagateItemsByPositionIndex([ 1,2,3,4,5 ]) => [ 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5 ]
  */
+
+/* todo */
 function propagateItemsByPositionIndex(/* arr */) {
   throw new Error('Not implemented');
 }
@@ -568,6 +645,8 @@ function propagateItemsByPositionIndex(/* arr */) {
  *    shiftArray(['a', 'b', 'c', 'd'], -1) => ['b', 'c', 'd', 'a']
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
+
+/* todo */
 function shiftArray(/* arr, n */) {
   throw new Error('Not implemented');
 }
@@ -585,6 +664,8 @@ function shiftArray(/* arr, n */) {
  *   sortDigitNamesByNumericOrder([ 'nine','eight','nine','eight' ]) => [ 'eight','eight','nine','nine']
  *   sortDigitNamesByNumericOrder([ 'one','one','one','zero' ]) => [ 'zero','one','one','one' ]
  */
+
+/* todo */
 function sortDigitNamesByNumericOrder(/* arr */) {
   throw new Error('Not implemented');
 }
@@ -608,6 +689,8 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
+
+/* todo */
 function swapHeadAndTail(/* arr */) {
   throw new Error('Not implemented');
 }
