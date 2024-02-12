@@ -408,38 +408,16 @@ function calculateBalance(arr) {
  *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
  */
 
-/* todo */
 function createChunks(arr, chunkSize) {
-  /* throw new Error('Not implemented'); */
-  let start = 0;
-  const end = start + chunkSize;
-  const arrLength = arr.length;
-  function setStart() {
-    start = end;
-    return true;
-  }
-
-  function setEnd() {
-    if (start + chunkSize < arrLength) {
-      return start + chunkSize;
-    }
-    return arrLength;
-  }
   const res = [];
-  function inner() {
-    res.push(arr.slice(start, end));
-    if (end < arrLength) {
-      setStart();
-      setEnd();
 
-      inner();
-    }
-  }
-  inner();
-  return res;
+  for (let i = 0; i < Math.round(arr.length); i += chunkSize) {
+    const chunk = arr.slice(i, i + chunkSize);
+   res.push(chunk);
+ }
+
+ return res;
 }
-
-/* console.log(createChunks([1, 2, 3, 4, 5, 6, 7], 3)); */
 
 /**
  * Generates an array of odd numbers of the specified length.
