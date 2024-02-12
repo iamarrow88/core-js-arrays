@@ -211,10 +211,9 @@ function isValueEqualsIndex(arr) {
  *    insertItem([ 1, 'b', 'c'], 'x', 0) => [ 'x', 1, 'b', 'c' ]
  */
 
-/* todo */
 function insertItem(arr, item, index) {
   /* throw new Error('Not implemented'); */
-  return arr.slice(0, index).concat(item).concat(arr.slice(index));
+  return arr.splice(index, 0, item);
 }
 
 /**
@@ -245,9 +244,11 @@ function getHead(arr, n) {
  *    getTail([ 'a', 'b', 'c', 'd'], 0) => []
  */
 
-/* todo */
 function getTail(arr, n) {
   /* throw new Error('Not implemented'); */
+  if (n === 0) {
+    return [];
+  }
   return arr.slice(-n);
 }
 
@@ -326,18 +327,22 @@ function distinct(arr) {
  */
 
 /* todo */
-function createNDimensionalArray(/* n, size */) {
-  throw new Error('Not implemented');
-  /* let startDepth = 1;
-  let arrayItem = Array(size).fill(0);
-  if (startDepth === n) {
-    return [].fill(arrayItem);
+function createNDimensionalArray(n, size) {
+  function createArray(length, content) {
+    const innerArray = Array(length);
+    innerArray.fill(content);
+    return innerArray;
   }
-  return arrayItem;
 
+  let array = [];
 
-console.log(createNDimensionalArray(2,3)); */
+  for (let i = 0; i < n; i += 1) {
+    const content = i === 0 ? 0 : array;
+    array = createArray(size, content);
+  }
+  return array;
 }
+
 /**
  * Flattens a nested array into a single-level array.
  *
