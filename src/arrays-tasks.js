@@ -535,9 +535,12 @@ function getIdentityMatrix(n) {
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
 
-/* todo */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  const result = [];
+  numbers.forEach((number, index) => {
+    if (number % 2 !== 0) result.push(index);
+  });
+  return result;
 }
 
 /**
