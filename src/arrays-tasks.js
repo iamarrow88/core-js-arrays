@@ -555,7 +555,7 @@ function getIndicesOfOddNumbers(numbers) {
  */
 
 /* todo */
-function getHexRGBValues(/*arr*/) {
+function getHexRGBValues(/* arr */) {
   throw new Error('Not implemented');
   /* const result = [];
    if (arr.length === 0) {
