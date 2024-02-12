@@ -510,10 +510,17 @@ function getFalsyValuesCount(arr) {
  *                              [0,0,0,1,0],
  *                              [0,0,0,0,1]]
  */
+function getIdentityMatrix(n) {
+  const matrix = [];
 
-/* todo */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+  for (let i = 0; i < n; i += 1) {
+    const innerArray = Array(n);
+    innerArray.fill(0);
+    innerArray.splice(i, 1, 1);
+    matrix.push(innerArray);
+  }
+
+  return matrix;
 }
 
 /**
