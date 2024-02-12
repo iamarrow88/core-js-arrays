@@ -413,10 +413,10 @@ function createChunks(arr, chunkSize) {
 
   for (let i = 0; i < Math.round(arr.length); i += chunkSize) {
     const chunk = arr.slice(i, i + chunkSize);
-   res.push(chunk);
- }
+    res.push(chunk);
+  }
 
- return res;
+  return res;
 }
 
 /**
@@ -460,9 +460,12 @@ function generateOdds(len) {
  *   getElementByIndices([[[ 1, 2, 3]]], [ 0, 0, 1 ]) => 2        (arr[0][0][1])
  */
 
-/* todo */
-function getElementByIndices(/* arr, indices */) {
-  throw new Error('Not implemented');
+function getElementByIndices(arr, indices) {
+  let res;
+  for (let i = 0; i < indices.length; i += 1) {
+    res = i === 0 ? arr[indices[i]] : res[indices[i]];
+  }
+  return res;
 }
 
 /**
