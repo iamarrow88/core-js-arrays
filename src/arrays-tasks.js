@@ -374,7 +374,7 @@ function flattenArray(nestedArray) {
  */
 function selectMany(arr, childrenSelector) {
   /* throw new Error('Not implemented'); */
-  return arr.map((el) => childrenSelector(el)).flat(Infinity);
+  return arr.flatMap((el) => childrenSelector(el));
 }
 
 /**
@@ -645,16 +645,16 @@ function findLongestIncreasingSubsequence(/* nums */) {
  */
 
 function propagateItemsByPositionIndex(arr) {
-  const result = [];
+  let result = [];
   if (arr.length === 0) {
     return result;
   }
-  arr.forEach((el, index) => {
+  result = arr.map((el, index) => {
     const newEl = Array(index + 1);
     newEl.fill(el);
-    result.push(...newEl);
+    return newEl;
   });
-  return result;
+  return result.flat();
 }
 
 /**
