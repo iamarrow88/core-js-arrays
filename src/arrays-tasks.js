@@ -555,8 +555,19 @@ function getIndicesOfOddNumbers(numbers) {
  */
 
 /* todo */
-function getHexRGBValues(/* arr */) {
+function getHexRGBValues(/*arr*/) {
   throw new Error('Not implemented');
+  /* const result = [];
+   if (arr.length === 0) {
+     return result;
+   } else {
+     /!*arr.forEach((color) => {
+       let hex = '#';
+       hex += color > 255 ? (255).toString(16) : color.toString(16);
+       result.push(hex);
+     })*!/
+     return result;
+   } */
 }
 
 /**
@@ -574,9 +585,9 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
 
-/* todo */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  const sortedArray = arr.sort((a, b) => b - a);
+  return sortedArray.slice(0, n);
 }
 
 /**
